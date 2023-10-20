@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermarcoratti/Widgets/Scaffold/widget_scaffold.dart';
+import 'package:fluttermarcoratti/Widgets/Texts/widget_Text.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,38 +14,33 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.purple,
         ),
-        home: home());
+        home: widgetBasicos());
+  }
+}
+
+class widgetBasicos extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text("Widgets Básicos")),
+        body: Container(
+          color: Colors.deepPurple,
+          child: widgetButton(),
+        ));
   }
 
-  home() {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('flutter - 2023'),
-        centerTitle: true,
-      ),
-      drawer: Container(color: Colors.orange),
-      body: Container(
-        color: Colors.white70,
-      ),
-      floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add_a_photo),
-          onPressed: () { print("Pressionado"); }
+  widgetButton() {
+    return Center(
+      child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.orange),
+          elevation: MaterialStateProperty.all<double?>(30.0),
         ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.lime,
-        child: Container(
-          height: 40.0,
-          child: const Row(
-            children: [
-              Text("Meu bottomappBar"),
-              Icon(Icons.home)
-            ],
-          ),
-        ),
+        child: Text("Clique em mim"),
+        onPressed: () {
+          print("pressionado");
+        },
       ),
-      persistentFooterButtons: const [
-        IconButton(onPressed: null, icon: Icon(Icons.add_alarm))
-      ],
     );
   }
 }
