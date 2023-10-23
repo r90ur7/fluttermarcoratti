@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermarcoratti/Widgets/Scaffold/widget_scaffold.dart';
-import 'package:fluttermarcoratti/Widgets/Texts/widget_Text.dart';
+import 'package:fluttermarcoratti/Widgets/Column/Row/widgetRowColumn.dart';
+
 
 void main() => runApp(const MyApp());
 
@@ -25,22 +25,16 @@ class widgetBasicos extends StatelessWidget {
         appBar: AppBar(title: Text("Widgets Básicos")),
         body: Container(
           color: Colors.deepPurple,
-          child: widgetButton(),
+          child: widgetImage(),
         ));
   }
-
-  widgetButton() {
-    return Center(
-      child: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Colors.orange),
-          elevation: MaterialStateProperty.all<double?>(30.0),
-        ),
-        child: Text("Clique em mim"),
-        onPressed: () {
-          print("pressionado");
-        },
-      ),
+  
+  widgetImage() {
+    return Image.asset(
+      "assets/images/1.jpg",
+      fit: BoxFit.cover,
+      height: 300,
     );
   }
+  
 }
