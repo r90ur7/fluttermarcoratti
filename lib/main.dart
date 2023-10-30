@@ -38,7 +38,7 @@ class _WidgetLoginState extends State<WidgetLogin> {
       obscureText: true,
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Email",
+          hintText: "Senha",
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
