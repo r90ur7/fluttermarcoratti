@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:fluttermarcoratti/Widgets/StatefullWidget/statefullWidget.dart';
 
 void main() => runApp(const MyApp());
 
@@ -17,14 +17,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class WidgetCorPreferda extends StatefulWidget {
-  @override
-  _WidgetCorPreferdaState createState() => _WidgetCorPreferdaState();
-}
 
-class _WidgetCorPreferdaState extends State<WidgetCorPreferda> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
