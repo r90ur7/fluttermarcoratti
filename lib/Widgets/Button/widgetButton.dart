@@ -7,7 +7,7 @@ widgetButton(String s) {
         backgroundColor: MaterialStateProperty.all<Color>(Colors.orange),
         elevation: MaterialStateProperty.all<double?>(30.0),
       ),
-      child: Text("OK"),
+      child: Text("Teste Botão"),
       onPressed: () {
         print("pressionado");
       },
