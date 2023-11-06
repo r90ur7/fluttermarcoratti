@@ -6,7 +6,6 @@ ListarGatinhos() {
 
     return ListView.builder(
       itemCount: itens.length,
-      // scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
         return ListTile(
           title: Text(itens[index]),

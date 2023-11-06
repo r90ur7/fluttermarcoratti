@@ -53,7 +53,7 @@ class _WidgetLoginState extends State<WidgetLogin> {
             SizedBox(
               height: 150.0,
               child: Image.asset(
-                "assets/images/1.png",
+                "assets/images/zoro.png",
                 fit: BoxFit.contain,
               ),
             ),

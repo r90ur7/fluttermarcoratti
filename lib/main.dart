@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermarcoratti/Widgets/RequestJson/requestJson.dart';
 
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -14,9 +15,9 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Http-Json_ListView'),
+          title: Text('Acesso'),
         ),
-        body: const Http_Json_ListView(),
+        body: Http_Json_ListView(),
       ),
     );
   }
