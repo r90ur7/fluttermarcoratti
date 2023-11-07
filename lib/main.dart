@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermarcoratti/Widgets/RequestJson/requestJson.dart';
-
+import 'package:fluttermarcoratti/Widgets/UGBAPI/turmas.dart';
 
 void main() => runApp(const MyApp());
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -17,7 +15,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Acesso'),
         ),
-        body: Http_Json_ListView(),
+        body: TurmasApi(),
       ),
     );
   }

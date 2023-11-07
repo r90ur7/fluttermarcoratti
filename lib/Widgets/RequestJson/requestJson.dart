@@ -14,9 +14,11 @@ class _Http_Json_ListViewState extends State<Http_Json_ListView> {
   var users = new List<User>.empty(growable: true);
 
   _getUsers() {
-    UserService.getUsers().then((response) {
-      Iterable lista = json.decode(response.body);
-      users = lista.map((model) => User.fromJson(model)).toList();
+    setState(() {
+      UserService.getUsers().then((response) {
+        Iterable lista = json.decode(response.body);
+        users = lista.map((model) => User.fromJson(model)).toList();
+      });
     });
   }
 
