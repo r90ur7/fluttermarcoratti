@@ -14,6 +14,8 @@ class _GasolOrAlcoolState extends State<GasolOrAlcool> {
   TextEditingController gasolinaController = TextEditingController();
   TextEditingController alcoolController = TextEditingController();
 
+  String _infoText = "Informe os valores dos combustiveis";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,27 +33,32 @@ class _GasolOrAlcoolState extends State<GasolOrAlcool> {
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.refresh),
-              onPressed: () {},
+              onPressed: () {
+                _resetValues();
+              },
             )
           ],
         ),
         backgroundColor: Colors.blueGrey,
-        body: Form(
-          key: _formkey,
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Icon(
-                  Icons.directions_car,
-                  size: 60.0,
-                  color: Colors.amber,
-                ),
-                buildTextFormFieldGasolina(),
-                buildTextFormFieldAlcool(),
-                buildContainerButton(context),
-                buildTextInfo()
-              ]),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(80.0, 0, 80.0, 0),
+          child: Form(
+            key: _formkey,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Icon(
+                    Icons.directions_car,
+                    size: 60.0,
+                    color: Colors.amber,
+                  ),
+                  buildTextFormFieldGasolina(),
+                  buildTextFormFieldAlcool(),
+                  buildContainerButton(context),
+                  buildTextInfo()
+                ]),
+          ),
         ));
   }
 
@@ -62,6 +69,18 @@ class _GasolOrAlcoolState extends State<GasolOrAlcool> {
         labelText: 'Preço da Gasolina',
         labelStyle: TextStyle(color: Colors.black, fontSize: 20.0),
       ),
+      style: TextStyle(fontSize: 30.0),
+      controller: gasolinaController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Informe o valor da Gasolina';
+        }
+        final isDigitsOnly = RegExp(r'^\d+(\.\d+)?$').hasMatch(value);
+        if (!isDigitsOnly) {
+          return 'Valor invalido';
+        }
+        return null;
+      },
     );
   }
 
@@ -72,10 +91,15 @@ class _GasolOrAlcoolState extends State<GasolOrAlcool> {
         labelText: 'Preço do Alcool',
         labelStyle: TextStyle(color: Colors.black, fontSize: 20.0),
       ),
+      style: TextStyle(fontSize: 30.0),
       controller: alcoolController,
       validator: (value) {
         if (value!.isEmpty) {
           return 'Informe o valor do Alcool';
+        }
+        final isDigitsOnly = RegExp(r'^\d+(\.\d+)?$').hasMatch(value);
+        if (!isDigitsOnly) {
+          return 'Valor invalido';
         }
         return null;
       },
@@ -89,7 +113,7 @@ class _GasolOrAlcoolState extends State<GasolOrAlcool> {
       child: ElevatedButton(
         onPressed: () {
           if (_formkey.currentState!.validate()) {
-            // _calcular();
+            _calcular();
             FocusScope.of(context).requestFocus(FocusNode());
           }
         },
@@ -103,12 +127,37 @@ class _GasolOrAlcoolState extends State<GasolOrAlcool> {
       ),
     );
   }
-  
+
   buildTextInfo() {
-    return const Text(
-      'Informe os valores de Gasolina e Alcool',
+    return Text(
+      _infoText,
       textAlign: TextAlign.center,
-      style: TextStyle(color: Colors.white, fontSize: 25.0),
+      style: const TextStyle(color: Colors.white, fontSize: 25.0),
     );
   }
+    void _calcular() {
+      setState(() {
+        double gasolina = double.parse(gasolinaController.text);
+        double alcool = double.parse(gasolinaController.text);
+
+        double resultado = (alcool/gasolina);
+        if (resultado > 0.70) {
+          _infoText =
+              "Percentual : (${resultado.toStringAsPrecision(3)})\n\nVale  a pena abastecer com Gasolina";
+        } else {
+          _infoText =
+              "Percentual : (${resultado.toStringAsPrecision(3)})\n\nVale  a pena abastecer com Gasolina";
+        }
+      });
+  }
+
+  _resetValues() {
+    setState(() {
+      gasolinaController.text = '';
+      alcoolController.text = '';
+      _infoText = 'Informe os valores dos combustiveis';
+    });
+  }
 }
+
+
