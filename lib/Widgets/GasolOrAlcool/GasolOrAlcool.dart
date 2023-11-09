@@ -135,20 +135,21 @@ class _GasolOrAlcoolState extends State<GasolOrAlcool> {
       style: const TextStyle(color: Colors.white, fontSize: 25.0),
     );
   }
-    void _calcular() {
-      setState(() {
-        double gasolina = double.parse(gasolinaController.text);
-        double alcool = double.parse(gasolinaController.text);
 
-        double resultado = (alcool/gasolina);
-        if (resultado > 0.70) {
-          _infoText =
-              "Percentual : (${resultado.toStringAsPrecision(3)})\n\nVale  a pena abastecer com Gasolina";
-        } else {
-          _infoText =
-              "Percentual : (${resultado.toStringAsPrecision(3)})\n\nVale  a pena abastecer com Gasolina";
-        }
-      });
+  void _calcular() {
+    setState(() {
+      double gasolina = double.parse(gasolinaController.text);
+      double alcool = double.parse(alcoolController.text);
+
+      double resultado = (alcool / gasolina);
+      if (resultado > 0.70) {
+        _infoText =
+            "Percentual : (${resultado.toStringAsPrecision(3)})\n\nVale  a pena abastecer com Gasolina";
+      } else {
+        _infoText =
+            "Percentual : (${resultado.toStringAsPrecision(3)})\n\nVale  a pena abastecer com Alcool";
+      }
+    });
   }
 
   _resetValues() {
@@ -159,5 +160,3 @@ class _GasolOrAlcoolState extends State<GasolOrAlcool> {
     });
   }
 }
-
-
