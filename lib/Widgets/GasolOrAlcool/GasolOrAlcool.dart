@@ -9,7 +9,7 @@ class GasolOrAlcool extends StatefulWidget {
 }
 
 class _GasolOrAlcoolState extends State<GasolOrAlcool> {
-  GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   TextEditingController gasolinaController = TextEditingController();
   TextEditingController alcoolController = TextEditingController();
@@ -69,7 +69,7 @@ class _GasolOrAlcoolState extends State<GasolOrAlcool> {
         labelText: 'Preço da Gasolina',
         labelStyle: TextStyle(color: Colors.black, fontSize: 20.0),
       ),
-      style: TextStyle(fontSize: 30.0),
+      style: const TextStyle(fontSize: 30.0),
       controller: gasolinaController,
       validator: (value) {
         if (value!.isEmpty) {
@@ -91,7 +91,7 @@ class _GasolOrAlcoolState extends State<GasolOrAlcool> {
         labelText: 'Preço do Alcool',
         labelStyle: TextStyle(color: Colors.black, fontSize: 20.0),
       ),
-      style: TextStyle(fontSize: 30.0),
+      style: const TextStyle(fontSize: 30.0),
       controller: alcoolController,
       validator: (value) {
         if (value!.isEmpty) {
