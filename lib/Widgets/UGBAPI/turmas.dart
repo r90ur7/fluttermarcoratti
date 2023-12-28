@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttermarcoratti/Widgets/UGBAPI/ApiTurma.dart';
 import 'package:fluttermarcoratti/Widgets/UGBAPI/service.dart';
@@ -36,20 +37,24 @@ class _TurmasApiState extends State<TurmasApi> {
   }
 
   ListarTurma() {
-    return ListView.builder(
-        itemCount: turmas.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(turmas[index].nome ?? 'Aluno não encontrado',
-                style: TextStyle(fontSize: 20.0, color: Colors.black)),
-            subtitle: Text(turmas[index].curso?.nome ?? ""),
-            leading: Icon(Icons.people),
-            trailing: Icon(Icons.arrow_forward),
-            onTap: () {
-              var aluno = turmas[index].nome;
-              print("clicou no aluno(a) $aluno");
-            },
-          );
-        });
+    return Scaffold(
+      body: ListView.builder(
+          itemCount: turmas.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(turmas[index].nome ?? 'Aluno não encontrado',
+                  style: TextStyle(fontSize: 20.0, color: Colors.black)),
+              subtitle: Text(turmas[index].curso?.nome ?? ""),
+              leading: Icon(Icons.people),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                var aluno = turmas[index].nome;
+                if (kDebugMode) {
+                  print("clicou no aluno(a) $aluno");
+                }
+              },
+            );
+          }),
+    );
   }
 }

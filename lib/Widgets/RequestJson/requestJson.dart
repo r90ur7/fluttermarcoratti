@@ -33,34 +33,36 @@ class _Http_Json_ListViewState extends State<Http_Json_ListView> {
 
   ListarHumanos() {
 
-    return ListView.builder(
-        itemCount: users.length,
-        itemBuilder: (context, index) {
-          return  ListTile(
-            leading: const CircleAvatar(
-              backgroundImage: NetworkImage('http://www.macoratti.net/Imagens/contato1.png'
-              ),//users[index].avatar,
-            ),
-            title: Text(
-              users[index].name ?? 'Usário não encontrado',
-              style: const TextStyle(
-              fontSize: 20,
-              color: Colors.black),
-            ),
-            subtitle: Text(users[index].email ?? "Email não encontrado"),
-
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetalhesHumanos(
-                    users[index],
+    return Scaffold(
+      body: ListView.builder(
+          itemCount: users.length,
+          itemBuilder: (context, index) {
+            return  ListTile(
+              leading: const CircleAvatar(
+                backgroundImage: NetworkImage('http://www.macoratti.net/Imagens/contato1.png'
+                ),//users[index].avatar,
+              ),
+              title: Text(
+                users[index].name ?? 'Usário não encontrado',
+                style: const TextStyle(
+                fontSize: 20,
+                color: Colors.black),
+              ),
+              subtitle: Text(users[index].email ?? "Email não encontrado"),
+      
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetalhesHumanos(
+                      users[index],
+                    ),
                   ),
-                ),
-              );
-            },
-          );
-        });
+                );
+              },
+            );
+          }),
+    );
   }
 }
 
